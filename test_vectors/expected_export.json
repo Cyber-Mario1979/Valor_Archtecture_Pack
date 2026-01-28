@@ -1,0 +1,40 @@
+{
+  "export_id": "EXP-0001",
+  "wp_id": "WP-0007",
+  "format": "JSON",
+  "rows": [
+    {
+      "task_id": "T-0001",
+      "name": "URS Draft",
+      "status": "OPEN"
+    },
+    {
+      "task_id": "T-0002",
+      "name": "DQ Draft",
+      "status": "OPEN"
+    },
+    {
+      "task_id": "T-0003",
+      "name": "RTM Build",
+      "status": "OPEN"
+    }
+  ],
+  "stamps": {
+    "preset": {
+      "id": "PS-STERILE",
+      "version": "v0.1.0"
+    },
+    "profile": {
+      "id": "PR-DEFAULT",
+      "version": "v1.0.0"
+    },
+    "calendar": {
+      "id": "CAL-WORKWEEK",
+      "version": "v1.0.0"
+    },
+    "bundle": {
+      "id": "BND-CQV-BASE",
+      "version": "v1.0.0"
+    }
+  }
+}

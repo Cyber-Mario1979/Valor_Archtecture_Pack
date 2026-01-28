@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CSV Export Row",
+  "type": "object",
+  "properties": {
+    "wp_id": {
+      "type": "string"
+    },
+    "wp_title": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "task_description": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "finish_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "planned_duration_days": {
+      "type": "number"
+    },
+    "elapsed_days": {
+      "type": "number"
+    },
+    "remaining_days": {
+      "type": "number"
+    },
+    "lateness_days": {
+      "type": "number"
+    },
+    "time_elapsed_percent": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "wp_id",
+    "task_id"
+  ],
+  "additionalProperties": true,
+  "$id": "valor://schemas/objects/csv_export_schema.json"
+}

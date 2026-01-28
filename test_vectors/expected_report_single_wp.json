@@ -1,0 +1,43 @@
+{
+  "report_id": "RPT-0002",
+  "report_type": "WP_TASKS_REPORT",
+  "title": "WP & Tasks Report",
+  "generated_at_utc": "2025-12-26T00:00:00Z",
+  "wp_summaries": [
+    {
+      "wp_id": "WP001",
+      "wp_title": "HVAC AHU Validation",
+      "tasks_table": [
+        {
+          "task_id": "WP001-T001",
+          "description": "URS review & approval",
+          "owner": "CQV",
+          "start_date": "12/12/2025",
+          "finish_date": "14/12/2025",
+          "status": "Opened"
+        },
+        {
+          "task_id": "WP001-T002",
+          "description": "RTM development and approval",
+          "owner": "CQV",
+          "start_date": "15/12/2025",
+          "finish_date": "17/12/2025",
+          "status": "Opened"
+        },
+        {
+          "task_id": "WP001-T003",
+          "description": "Design Qualification (DQ) preparation",
+          "owner": "Engineering",
+          "start_date": "18/12/2025",
+          "finish_date": "22/12/2025",
+          "status": "Opened"
+        }
+      ]
+    }
+  ],
+  "rendered_markdown": "# WP & Tasks Report\n\n### WP001 \u2013 HVAC AHU Validation\n| Task ID | Description | Owner | Start Date | Finish Date | Status |\n|---|---|---|---|---|---|\n| WP001-T001 | URS review & approval | CQV | 12/12/2025 | 14/12/2025 | Opened |\n| WP001-T002 | RTM development and approval | CQV | 15/12/2025 | 17/12/2025 | Opened |\n| WP001-T003 | Design Qualification (DQ) preparation | Engineering | 18/12/2025 | 22/12/2025 | Opened |",
+  "completeness": {
+    "percent": 100,
+    "missing_items_detected": false
+  }
+}

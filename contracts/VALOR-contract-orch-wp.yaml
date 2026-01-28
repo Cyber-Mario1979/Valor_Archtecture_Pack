@@ -1,0 +1,195 @@
+contract_id: VALOR-contract-orch-wp
+current_version: v1.0.1
+supported_versions:
+- v1.0.1
+owner_subsystem: WP
+called_by: Orchestration
+compatibility_policy:
+  semver: true
+  orchestration_rules:
+    accept_minor_patch_within_major: true
+    refuse_major_without_explicit_upgrade: true
+envelopes:
+  request_schema: schemas/contracts/contract_request.schema.json
+  response_schema: schemas/contracts/contract_response.schema.json
+error_taxonomy:
+  standard_codes:
+  - MODE_VIOLATION
+  - VALIDATION_ERROR
+  - INVARIANT_VIOLATION
+  - NOT_FOUND
+  - CONFLICT
+  - UNSUPPORTED_OPERATION
+  - INTERNAL_ERROR
+stamp_policy:
+  required_for_mutations: false
+  required_for_regulated_outputs: true
+actions:
+- action_type: WP_GET
+  allowed_modes:
+  - M1
+  - M2
+  side_effect_class: READ_ONLY
+  idempotent: true
+  required_payload_fields: []
+  optional_payload_fields:
+  - include_tasks
+  - include_dependencies
+  - include_metadata
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  result_schema_ref: schemas/objects/work_package_schema.json
+  errors:
+  - code: NOT_FOUND
+    subcode: WP_NOT_FOUND
+  - code: VALIDATION_ERROR
+    subcode: MISSING_REQUIRED_FIELD
+- action_type: WP_CREATE
+  allowed_modes:
+  - M2
+  side_effect_class: MUTATES_TRUTH
+  idempotent: false
+  confirmation_required: true
+  required_payload_fields:
+  - wp_seed
+  optional_payload_fields:
+  - labels
+  - notes
+  target_fields:
+    required: []
+    optional: []
+  result_schema_ref: schemas/objects/work_package_schema.json
+  errors:
+  - code: VALIDATION_ERROR
+    subcode: PAYLOAD_SCHEMA_MISMATCH
+  - code: CONFLICT
+    subcode: DUPLICATE_WP_ID
+- action_type: WP_STAGE_TASKS
+  allowed_modes:
+  - M2
+  side_effect_class: STAGE_ONLY
+  idempotent: true
+  required_payload_fields:
+  - task_set_ref
+  optional_payload_fields:
+  - include_optional_tasks
+  - overrides
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  result_schema_ref: schemas/contracts/staged_task_set.schema.json
+  errors:
+  - code: NOT_FOUND
+    subcode: WP_NOT_FOUND
+  - code: VALIDATION_ERROR
+    subcode: MISSING_REQUIRED_FIELD
+- action_type: WP_COMMIT_STAGED_TASKS
+  allowed_modes:
+  - M2
+  side_effect_class: MUTATES_TRUTH
+  idempotent: true
+  confirmation_required: true
+  required_payload_fields:
+  - staged_task_set_id
+  optional_payload_fields: []
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  result_schema_ref: schemas/objects/work_package_schema.json
+  errors:
+  - code: CONFLICT
+    subcode: STAGED_SET_NOT_FOUND
+  - code: CONFLICT
+    subcode: ALREADY_COMMITTED
+  - code: INVARIANT_VIOLATION
+    subcode: ID_REUSE
+  - code: INVARIANT_VIOLATION
+    subcode: CYCLE_DETECTED
+- action_type: WP_UPDATE_TASK_FIELDS
+  allowed_modes:
+  - M2
+  side_effect_class: MUTATES_TRUTH
+  idempotent: false
+  confirmation_required: true
+  required_payload_fields:
+  - updates
+  optional_payload_fields:
+  - change_reason
+  target_fields:
+    required:
+    - wp_id
+    optional:
+    - task_id
+  result_schema_ref: schemas/objects/work_package_schema.json
+  errors:
+  - code: NOT_FOUND
+    subcode: TASK_NOT_FOUND
+  - code: MODE_VIOLATION
+    subcode: COMMIT_IN_WRONG_MODE
+  - code: INVARIANT_VIOLATION
+    subcode: CYCLE_DETECTED
+- action_type: WP_APPLY_PLAN_PROPOSAL
+  allowed_modes:
+  - M2
+  side_effect_class: MUTATES_TRUTH
+  idempotent: false
+  confirmation_required: true
+  required_payload_fields:
+  - plan_proposal_id
+  - date_updates
+  optional_payload_fields:
+  - change_reason
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  result_schema_ref: schemas/objects/work_package_schema.json
+  errors:
+  - code: NOT_FOUND
+    subcode: PLAN_PROPOSAL_NOT_FOUND
+  - code: VALIDATION_ERROR
+    subcode: PAYLOAD_SCHEMA_MISMATCH
+- action_type: WP_BIND_PRESET_CONTEXT
+  allowed_modes:
+  - M2
+  side_effect_class: MUTATES_TRUTH
+  idempotent: true
+  confirmation_required: true
+  required_payload_fields:
+  - preset_context
+  optional_payload_fields: []
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  result_schema_ref: schemas/objects/work_package_schema.json
+  errors:
+  - code: VALIDATION_ERROR
+    subcode: PAYLOAD_SCHEMA_MISMATCH
+examples:
+- name: wp_stage_tasks_request
+  request:
+    contract: VALOR-contract-orch-wp
+    contract_version: v1.0.1
+    action_id: ACT-000101
+    action_type: WP_STAGE_TASKS
+    mode: M2
+    actor:
+      role: User
+      name: optional
+    target:
+      wp_id: WP-0007
+    payload:
+      task_set_ref:
+        task_pool_id: TP-BASE
+        task_pool_version: v1.0.1
+        preset_id: PS-STERILE
+        preset_version: v1.0.1
+    options:
+      dry_run: false
+    context:
+      timestamp_utc: '2025-12-25T00:00:00Z'

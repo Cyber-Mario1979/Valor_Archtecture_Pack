@@ -1,0 +1,28 @@
+{
+  "wp_id": "WP-0007",
+  "title": "Example WP - Basic CQV Pack",
+  "state": "DRAFT",
+  "stamps": {
+    "preset": {
+      "id": "PS-STERILE",
+      "version": "v0.1.0"
+    },
+    "profile": {
+      "id": "PR-DEFAULT",
+      "version": "v1.0.0"
+    },
+    "calendar": {
+      "id": "CAL-WORKWEEK",
+      "version": "v1.0.0"
+    },
+    "bundle": {
+      "id": "BND-CQV-BASE",
+      "version": "v1.0.0"
+    }
+  },
+  "tasks": [],
+  "metadata": {
+    "created_by": "User",
+    "version": "v0.1.0"
+  }
+}

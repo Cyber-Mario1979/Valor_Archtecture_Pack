@@ -1,0 +1,52 @@
+{
+  "generated_at_utc": "2025-12-26T03:09:36.351765Z",
+  "pack_version": "v1.0.1",
+  "count": 9,
+  "items": [
+    {
+      "template": "templates/T10_VSR_Template_V1_0_1.md",
+      "schema": "schemas/documents/T10_VSR_Template_V1_0_1.schema.json",
+      "placeholder_count": 21
+    },
+    {
+      "template": "templates/T1_VMP_Template_V1_0_1.md",
+      "schema": "schemas/documents/T1_VMP_Template_V1_0_1.schema.json",
+      "placeholder_count": 21
+    },
+    {
+      "template": "templates/T3_Risk_Assessment_Template_V1_0_1.md",
+      "schema": "schemas/documents/T3_Risk_Assessment_Template_V1_0_1.schema.json",
+      "placeholder_count": 21
+    },
+    {
+      "template": "templates/T4_URS_Template_V1_0_1.md",
+      "schema": "schemas/documents/T4_URS_Template_V1_0_1.schema.json",
+      "placeholder_count": 22
+    },
+    {
+      "template": "templates/T5_RTM_Template_V1_0_1.md",
+      "schema": "schemas/documents/T5_RTM_Template_V1_0_1.schema.json",
+      "placeholder_count": 21
+    },
+    {
+      "template": "templates/T6_DQ_Template_V1_0_1.md",
+      "schema": "schemas/documents/T6_DQ_Template_V1_0_1.schema.json",
+      "placeholder_count": 22
+    },
+    {
+      "template": "templates/T7_IQ_Protocol_Template_V1_0_1.md",
+      "schema": "schemas/documents/T7_IQ_Protocol_Template_V1_0_1.schema.json",
+      "placeholder_count": 22
+    },
+    {
+      "template": "templates/T8_OQ_Protocol_Template_V1_0_1.md",
+      "schema": "schemas/documents/T8_OQ_Protocol_Template_V1_0_1.schema.json",
+      "placeholder_count": 22
+    },
+    {
+      "template": "templates/T9_PQ_Protocol_Template_V1_0_1.md",
+      "schema": "schemas/documents/T9_PQ_Protocol_Template_V1_0_1.schema.json",
+      "placeholder_count": 22
+    }
+  ]
+}

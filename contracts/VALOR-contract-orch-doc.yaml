@@ -1,0 +1,97 @@
+contract_id: VALOR-contract-orch-doc
+current_version: v1.0.1
+supported_versions:
+- v1.0.1
+owner_subsystem: DOC
+called_by: Orchestration
+compatibility_policy:
+  semver: true
+  orchestration_rules:
+    accept_minor_patch_within_major: true
+    refuse_major_without_explicit_upgrade: true
+envelopes:
+  request_schema: schemas/contracts/contract_request.schema.json
+  response_schema: schemas/contracts/contract_response.schema.json
+error_taxonomy:
+  standard_codes:
+  - MODE_VIOLATION
+  - VALIDATION_ERROR
+  - INVARIANT_VIOLATION
+  - NOT_FOUND
+  - CONFLICT
+  - UNSUPPORTED_OPERATION
+  - INTERNAL_ERROR
+actions:
+- action_type: DOC_GENERATE_DRAFT
+  allowed_modes:
+  - M2
+  side_effect_class: GENERATES_ARTIFACT
+  idempotent: true
+  required_payload_fields:
+  - wp_snapshot
+  - template_ref
+  - citation_set
+  optional_payload_fields:
+  - render_options
+  - redaction_options
+  target_fields:
+    required:
+    - wp_id
+    optional:
+    - doc_id
+  result_schema_ref: schemas/contracts/doc_draft_result.schema.json
+  errors:
+  - code: VALIDATION_ERROR
+    subcode: TEMPLATE_REQUIREMENT_MISSING
+  - code: UNSUPPORTED_OPERATION
+    subcode: EXCERPT_BLOCKED
+- action_type: DOC_FINALIZE_ARTIFACT
+  allowed_modes:
+  - M2
+  side_effect_class: GENERATES_ARTIFACT
+  idempotent: false
+  confirmation_required: true
+  required_payload_fields:
+  - draft_id
+  optional_payload_fields:
+  - final_format
+  target_fields:
+    required:
+    - wp_id
+    optional:
+    - doc_id
+  result_schema_ref: schemas/contracts/doc_artifact_result.schema.json
+  errors:
+  - code: NOT_FOUND
+    subcode: DRAFT_NOT_FOUND
+  - code: VALIDATION_ERROR
+    subcode: STAMP_SET_MISSING
+examples:
+- name: doc_generate_draft_request
+  request:
+    contract: VALOR-contract-orch-doc
+    contract_version: v1.0.1
+    action_id: ACT-000301
+    action_type: DOC_GENERATE_DRAFT
+    mode: M2
+    actor:
+      role: User
+      name: optional
+    target:
+      wp_id: WP-0007
+    payload:
+      wp_snapshot:
+        wp_id: WP-0007
+        tasks: omitted_for_brevity
+      template_ref:
+        template_id: TMP-URS
+        template_version: v1.0.1
+      citation_set:
+      - asset_type: standard
+        asset_id: STD-123
+        asset_version: '2020'
+        anchor_id: A-5-2
+    options:
+      dry_run: false
+    context:
+      timestamp_utc: '2025-12-25T00:00:00Z'

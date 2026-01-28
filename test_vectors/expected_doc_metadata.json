@@ -1,0 +1,25 @@
+{
+  "doc_id": "DOC-URS-0001",
+  "wp_id": "WP-0007",
+  "doc_type": "URS",
+  "template_ref": {
+    "template_id": "TMP-URS",
+    "version": "v1.0.0"
+  },
+  "bundle_ref": {
+    "id": "BND-CQV-BASE",
+    "version": "v1.0.0"
+  },
+  "citation_set": [
+    {
+      "asset_type": "standard",
+      "asset_id": "STD-123",
+      "asset_version": "2020",
+      "anchor_id": "A-5-2"
+    }
+  ],
+  "provenance": {
+    "generated_by": "DOC",
+    "timestamp_utc": "2025-12-25T00:00:00Z"
+  }
+}

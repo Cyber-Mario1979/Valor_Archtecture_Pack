@@ -1,0 +1,24 @@
+# Action Spec: WP_APPLY_PLAN_PROPOSAL
+action_type: WP_APPLY_PLAN_PROPOSAL
+allowed_modes: [M2]
+side_effect_class: MUTATES_TRUTH
+idempotency: NON_IDEMPOTENT
+
+required_payload_fields:
+  - plan_proposal_id
+  - date_updates
+
+optional_payload_fields:
+  - change_reason
+
+target_fields:
+  required: [wp_id]
+  optional: []
+
+result_schema_ref: schemas/wp.json
+
+notes:
+  purpose: "Commit dates into WP/task truth based on Planning output; enforces Proposal vs Commitment boundary."
+  expectations:
+    - "Require explicit confirmation in orchestration before executing."
+    - "Validate date_updates align with existing task IDs and calendar logic policy."

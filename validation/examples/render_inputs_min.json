@@ -1,0 +1,40 @@
+{
+  "wp": {
+    "id": "WP007",
+    "title": "Example Work Package"
+  },
+  "doc": {
+    "id": "DOC-URS-0001",
+    "title": "User Requirements Specification",
+    "doc_type": "URS",
+    "status": "DRAFT",
+    "version": "v1.0.0",
+    "revision_date": "2025-12-26",
+    "generated_utc": "2025-12-26T00:00:00Z",
+    "actors": {
+      "author": "Author Name",
+      "reviewer": "Reviewer Name",
+      "approver": "Approver Name"
+    },
+    "stamps": {
+      "preset": {
+        "id": "PS-STERILE",
+        "version": "v0.1.0"
+      },
+      "profile": {
+        "id": "PR-DEFAULT",
+        "version": "v1.0.0"
+      },
+      "calendar": {
+        "id": "CAL-WORKWEEK",
+        "version": "v1.0.0"
+      },
+      "bundle": {
+        "id": "BND-CQV-BASE",
+        "version": "v1.0.0"
+      }
+    },
+    "signatures_table_md": "[signature]",
+    "citations_list_md": "- STD-123 (A-5-2)"
+  }
+}

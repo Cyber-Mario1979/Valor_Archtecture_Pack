@@ -1,0 +1,31 @@
+{
+  "wp_id": "WP-0007",
+  "staged_task_set_id": "STAGE-000045",
+  "tasks": [
+    {
+      "task_id": "T-0001",
+      "name": "URS Draft",
+      "type": "DOC",
+      "status": "STAGED"
+    },
+    {
+      "task_id": "T-0002",
+      "name": "DQ Draft",
+      "type": "DOC",
+      "status": "STAGED",
+      "depends_on": [
+        "T-0001"
+      ]
+    },
+    {
+      "task_id": "T-0003",
+      "name": "RTM Build",
+      "type": "DOC",
+      "status": "STAGED",
+      "depends_on": [
+        "T-0002"
+      ]
+    }
+  ],
+  "staged_hash": "sha256:EXAMPLE"
+}

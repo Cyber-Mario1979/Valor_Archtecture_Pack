@@ -1,0 +1,26 @@
+# Action Spec: WP_UPDATE_TASK_FIELDS
+action_type: WP_UPDATE_TASK_FIELDS
+allowed_modes: [M2]
+side_effect_class: MUTATES_TRUTH
+idempotency: NON_IDEMPOTENT
+
+required_payload_fields:
+  - updates
+
+# Optional payload fields (not required by your MUST list, but useful)
+optional_payload_fields:
+  - change_reason
+
+# Target fields (common pattern; optional but recommended)
+target_fields:
+  required: [wp_id]
+  optional: [task_id]
+
+# Where the successful response result must conform
+result_schema_ref: schemas/wp.json
+
+notes:
+  purpose: "Assign owners/status/notes and other mutable task/WP fields after tasks exist (post-commit)."
+  expectations:
+    - "Validate updates[] against task field constraints and WP invariants."
+    - "Reject attempts to write regulated schedule commitments unless explicitly permitted by policy."

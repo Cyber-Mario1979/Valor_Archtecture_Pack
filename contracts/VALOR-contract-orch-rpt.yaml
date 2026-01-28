@@ -1,0 +1,68 @@
+contract_id: VALOR-contract-orch-rpt
+current_version: v1.0.1
+supported_versions:
+  - v1.0.1
+owner_subsystem: Reporting
+called_by: Orchestration
+compatibility_policy:
+  semver: true
+  orchestration_rules:
+    accept_minor_patch_within_major: true
+    refuse_major_without_explicit_upgrade: true
+
+envelopes:
+  request_schema: schemas/contracts/contract_request.schema.json
+  response_schema: schemas/contracts/contract_response.schema.json
+
+outputs:
+  report_result_schema: schemas/contracts/report_result.schema.json
+
+actions:
+  - action_type: BUILD_REPORT
+    description: >
+      Generate a deterministic WP & Tasks report from one or more committed WP snapshots.
+      The report is a presentation artifact; it must not mutate WP state.
+    allowed_modes: [M1, M2]
+    side_effect_class: READ_ONLY
+    idempotent: true
+    required_payload_fields:
+      - report_type
+      - wp_snapshots
+    optional_payload_fields:
+      - title
+      - include_sections
+      - output_format
+    payload_schema_notes:
+      report_type:
+        allowed_values: [WP_TASKS_REPORT]
+      wp_snapshots:
+        type: array
+        items: object (WP snapshot projection sufficient for reporting)
+      include_sections:
+        type: array
+        allowed_values:
+          - Overview
+          - Objectives
+          - Traceability
+          - Tasks
+          - Risks
+          - Evidence
+          - Status
+          - NextSteps
+          - Completeness
+      output_format:
+        allowed_values: [MARKDOWN]
+
+error_taxonomy:
+  standard_codes:
+    - code: VALIDATION_ERROR
+      subcodes:
+        - MISSING_REQUIRED_FIELD
+        - PAYLOAD_SCHEMA_MISMATCH
+        - UNKNOWN_REPORT_TYPE
+    - code: NOT_FOUND
+      subcodes:
+        - WP_SNAPSHOT_MISSING
+    - code: INTERNAL_ERROR
+      subcodes:
+        - REPORT_RENDER_FAILED

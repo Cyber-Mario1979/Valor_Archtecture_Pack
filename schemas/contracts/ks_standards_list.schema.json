@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "valor://schemas/contracts/ks_standards_list.schema.json",
+  "title": "Knowledge Store Standards List",
+  "type": "object",
+  "required": [],
+  "properties": {},
+  "additionalProperties": true
+}

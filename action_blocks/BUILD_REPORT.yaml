@@ -1,0 +1,16 @@
+action_id: BUILD_REPORT
+contract: VALOR-contract-orch-rpt
+version: v1.0.1
+purpose: Generate a deterministic WP & Tasks report (presentation artifact) from WP snapshots.
+inputs:
+  required:
+    - report_type
+    - wp_snapshots
+  optional:
+    - title
+    - include_sections
+    - output_format
+outputs:
+  result_schema: schemas/contracts/report_result.schema.json
+side_effects: READ_ONLY
+idempotent: true

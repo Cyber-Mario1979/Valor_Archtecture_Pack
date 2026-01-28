@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "valor://schemas/contracts/preset.schema.json",
+  "title": "Preset",
+  "type": "object",
+  "required": [
+    "preset_id",
+    "version",
+    "bindings"
+  ],
+  "properties": {
+    "preset_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "stamps": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

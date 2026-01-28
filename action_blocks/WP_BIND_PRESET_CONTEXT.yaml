@@ -1,0 +1,24 @@
+# Action Spec: WP_BIND_PRESET_CONTEXT
+action_type: WP_BIND_PRESET_CONTEXT
+allowed_modes: [M2]
+side_effect_class: MUTATES_TRUTH
+idempotency: IDEMPOTENT
+
+required_payload_fields:
+  - preset_context
+
+optional_payload_fields: []
+
+target_fields:
+  required: [wp_id]
+  optional: []
+
+result_schema_ref: schemas/wp.json
+
+notes:
+  purpose: "Bind/stamp WP with preset/profile/calendar/bundle references used for traceability and regulated outputs."
+  preset_context_minimum_shape:
+    preset: {id: "<preset_id>", version: "<preset_version>"}
+    profile: {id: "<profile_id>", version: "<profile_version>"}
+    calendar: {id: "<calendar_id>", version: "<calendar_version>"}
+    bundle: {id: "<bundle_id>", version: "<bundle_version>"}

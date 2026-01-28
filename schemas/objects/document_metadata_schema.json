@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Document Metadata Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "revision_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "doc_type": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "generated_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "control_block_md": {
+      "type": "string"
+    },
+    "citations_list_md": {
+      "type": "string"
+    },
+    "signatures_table_md": {
+      "type": "string"
+    },
+    "actors": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "reviewer": {
+          "type": "string"
+        },
+        "approver": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "stamps": {
+      "type": "object",
+      "properties": {
+        "preset": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "profile": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "calendar": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "bundle": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "id",
+    "title"
+  ],
+  "additionalProperties": true,
+  "$id": "valor://schemas/objects/document_metadata_schema.json",
+  "description": "Document metadata (object schema). Extended with optional fields to support template rendering."
+}

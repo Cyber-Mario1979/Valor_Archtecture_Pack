@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Work Package",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^WP[0-9]{3}$",
+      "description": "Work Package ID in format WP### (three digits, zero-padded)."
+    },
+    "title": {
+      "type": "string"
+    },
+    "area": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "governance": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/task"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "scope"
+  ],
+  "definitions": {
+    "task": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^WP\\d{3}-T\\d{3}$"
+        },
+        "description": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "finish_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    }
+  },
+  "additionalProperties": true,
+  "$id": "valor://schemas/objects/work_package_schema.json"
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "valor://schemas/contracts/staged_task_set.schema.json",
+  "title": "Staged Task Set",
+  "type": "object",
+  "required": [],
+  "properties": {},
+  "additionalProperties": true
+}

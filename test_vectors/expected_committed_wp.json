@@ -1,0 +1,51 @@
+{
+  "wp_id": "WP-0007",
+  "state": "TASKS_COMMITTED",
+  "tasks": [
+    {
+      "task_id": "T-0001",
+      "name": "URS Draft",
+      "type": "DOC",
+      "status": "OPEN"
+    },
+    {
+      "task_id": "T-0002",
+      "name": "DQ Draft",
+      "type": "DOC",
+      "status": "OPEN",
+      "depends_on": [
+        "T-0001"
+      ]
+    },
+    {
+      "task_id": "T-0003",
+      "name": "RTM Build",
+      "type": "DOC",
+      "status": "OPEN",
+      "depends_on": [
+        "T-0002"
+      ]
+    }
+  ],
+  "invariants": {
+    "dependency_cycle_free": true
+  },
+  "stamps": {
+    "preset": {
+      "id": "PS-STERILE",
+      "version": "v0.1.0"
+    },
+    "profile": {
+      "id": "PR-DEFAULT",
+      "version": "v1.0.0"
+    },
+    "calendar": {
+      "id": "CAL-WORKWEEK",
+      "version": "v1.0.0"
+    },
+    "bundle": {
+      "id": "BND-CQV-BASE",
+      "version": "v1.0.0"
+    }
+  }
+}

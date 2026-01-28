@@ -1,0 +1,21 @@
+calendar_id: CAL-WORKWEEK
+calendar_version: v1.0.1
+revision_date: '2025-12-26'
+name: Standard Workweek (Sun–Thu) — Weekend (Fri–Sat)
+timezone: Africa/Cairo
+weekend_rule:
+  weekend_days:
+  - FRI
+  - SAT
+  weekend_handling: DEFER_TO_NEXT_WORKING_DAY
+  allow_working_weekends: false
+holidays:
+  holiday_dates: []
+  holiday_name_map: {}
+  policy: TREAT_AS_NON_WORKING
+working_hours: null
+arithmetic_policy:
+  duration_unit: WORKING_DAYS
+  start_date_rule: IF_NON_WORKING_START_NEXT_WORKING
+  end_date_rule: END_INCLUSIVE
+  diff_policy: COUNT_WORKING_DAYS_BETWEEN

@@ -1,0 +1,121 @@
+contract_id: VALOR-contract-orch-ps
+current_version: v1.0.1
+supported_versions:
+- v1.0.1
+owner_subsystem: PS
+called_by: Orchestration
+compatibility_policy:
+  semver: true
+  orchestration_rules:
+    accept_minor_patch_within_major: true
+    refuse_major_without_explicit_upgrade: true
+envelopes:
+  request_schema: schemas/contracts/contract_request.schema.json
+  response_schema: schemas/contracts/contract_response.schema.json
+
+error_taxonomy:
+  standard_codes:
+    - VALIDATION_ERROR
+    - NOT_FOUND
+    - CONFLICT
+    - UNSUPPORTED_OPERATION
+    - INTERNAL_ERROR
+  ps_subcodes:
+    - NO_MATCH
+    - MULTIPLE_MATCHES
+    - BINDING_INCOMPATIBLE
+    - RULESET_NONDETERMINISTIC
+    - RULE_CONTRADICTION
+
+actions:
+- action_type: PS_LIST_PRESETS
+  allowed_modes: [M1, M2]
+  side_effect_class: READ_ONLY
+  idempotent: true
+  required_payload_fields: []
+  optional_payload_fields:
+    - filters
+  target_fields:
+    required: []
+    optional: []
+  result_schema_ref: schemas/contracts/ps_presets_list.schema.json
+  errors:
+    - code: VALIDATION_ERROR
+      subcode: PAYLOAD_SCHEMA_MISMATCH
+
+- action_type: PS_READ_PRESET
+  allowed_modes: [M1, M2]
+  side_effect_class: READ_ONLY
+  idempotent: true
+  required_payload_fields:
+    - preset_id
+    - version
+  optional_payload_fields: []
+  target_fields:
+    required: []
+    optional: []
+  result_schema_ref: schemas/contracts/preset.schema.json
+  errors:
+    - code: NOT_FOUND
+      subcode: PRESET_NOT_FOUND
+    - code: VALIDATION_ERROR
+      subcode: MISSING_REQUIRED_FIELD
+
+- action_type: PS_RESOLVE_PRESET
+  allowed_modes: [M1, M2]
+  side_effect_class: READ_ONLY
+  idempotent: true
+  required_payload_fields:
+    - context
+  optional_payload_fields:
+    - options
+  target_fields:
+    required: []
+    optional: []
+  result_schema_ref: schemas/contracts/ps_resolve_result.schema.json
+  errors:
+    - code: VALIDATION_ERROR
+      subcode: MISSING_REQUIRED_FIELD
+    - code: NOT_FOUND
+      subcode: NO_MATCH
+    - code: CONFLICT
+      subcode: MULTIPLE_MATCHES
+    - code: CONFLICT
+      subcode: BINDING_INCOMPATIBLE
+
+- action_type: PS_VALIDATE_BINDINGS
+  allowed_modes: [M1, M2]
+  side_effect_class: READ_ONLY
+  idempotent: true
+  required_payload_fields:
+    - preset_id
+    - preset_version
+  optional_payload_fields: []
+  target_fields:
+    required: []
+    optional: []
+  result_schema_ref: schemas/contracts/plan_validation_result.schema.json
+  errors:
+    - code: VALIDATION_ERROR
+      subcode: PAYLOAD_SCHEMA_MISMATCH
+
+examples:
+- name: ps_resolve_preset_request
+  request:
+    contract: VALOR-contract-orch-ps
+    contract_version: v1.0.1
+    action_type: PS_RESOLVE_PRESET
+    caller:
+      role: Orchestration
+      name: Valor
+    target: {}
+    payload:
+      context:
+        system_type: Process
+        complexity: High
+        tags: ["ProcessEquipment", "HighComplexity"]
+        scope: project
+    options:
+      require_exact_match: true
+    context:
+      timestamp_utc: '2025-12-26T00:00:00Z'

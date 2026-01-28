@@ -1,0 +1,48 @@
+{
+  "plan_proposal_id": "PLAN-00012",
+  "wp_id": "WP-0007",
+  "calendar_ref": {
+    "id": "CAL-WORKWEEK",
+    "version": "v1.0.0"
+  },
+  "profile_ref": {
+    "id": "PR-DEFAULT",
+    "version": "v1.0.0"
+  },
+  "schedule": [
+    {
+      "task_id": "T-0001",
+      "start": "2025-12-29",
+      "finish": "2025-12-30"
+    },
+    {
+      "task_id": "T-0002",
+      "start": "2025-12-31",
+      "finish": "2026-01-02"
+    },
+    {
+      "task_id": "T-0003",
+      "start": "2026-01-05",
+      "finish": "2026-01-06"
+    }
+  ],
+  "status": "PROPOSED",
+  "stamps": {
+    "preset": {
+      "id": "PS-STERILE",
+      "version": "v0.1.0"
+    },
+    "profile": {
+      "id": "PR-DEFAULT",
+      "version": "v1.0.0"
+    },
+    "calendar": {
+      "id": "CAL-WORKWEEK",
+      "version": "v1.0.0"
+    },
+    "bundle": {
+      "id": "BND-CQV-BASE",
+      "version": "v1.0.0"
+    }
+  }
+}

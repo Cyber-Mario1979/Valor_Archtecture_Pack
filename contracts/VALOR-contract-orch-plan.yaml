@@ -1,0 +1,91 @@
+contract_id: VALOR-contract-orch-plan
+current_version: v1.0.1
+supported_versions:
+- v1.0.1
+owner_subsystem: PLAN
+called_by: Orchestration
+compatibility_policy:
+  semver: true
+  orchestration_rules:
+    accept_minor_patch_within_major: true
+    refuse_major_without_explicit_upgrade: true
+envelopes:
+  request_schema: schemas/contracts/contract_request.schema.json
+  response_schema: schemas/contracts/contract_response.schema.json
+error_taxonomy:
+  standard_codes:
+  - MODE_VIOLATION
+  - VALIDATION_ERROR
+  - INVARIANT_VIOLATION
+  - NOT_FOUND
+  - CONFLICT
+  - UNSUPPORTED_OPERATION
+  - INTERNAL_ERROR
+actions:
+- action_type: PLAN_GENERATE_PROPOSAL
+  allowed_modes:
+  - M2
+  side_effect_class: GENERATES_ARTIFACT
+  idempotent: true
+  required_payload_fields:
+  - wp_snapshot
+  - profile_ref
+  - calendar_ref
+  optional_payload_fields:
+  - constraints
+  - options
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  result_schema_ref: schemas/contracts/plan_proposal.schema.json
+  errors:
+  - code: VALIDATION_ERROR
+    subcode: MISSING_REQUIRED_FIELD
+  - code: VALIDATION_ERROR
+    subcode: CALENDAR_LOGIC_MISSING
+  - code: INVARIANT_VIOLATION
+    subcode: CYCLE_DETECTED
+- action_type: PLAN_VALIDATE_PROPOSAL
+  allowed_modes:
+  - M2
+  side_effect_class: VALIDATE_ONLY
+  idempotent: true
+  required_payload_fields:
+  - plan_proposal
+  optional_payload_fields: []
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  result_schema_ref: schemas/contracts/plan_validation_result.schema.json
+  errors:
+  - code: VALIDATION_ERROR
+    subcode: PAYLOAD_SCHEMA_MISMATCH
+examples:
+- name: plan_generate_request
+  request:
+    contract: VALOR-contract-orch-plan
+    contract_version: v1.0.1
+    action_id: ACT-000201
+    action_type: PLAN_GENERATE_PROPOSAL
+    mode: M2
+    actor:
+      role: User
+      name: optional
+    target:
+      wp_id: WP-0007
+    payload:
+      wp_snapshot:
+        wp_id: WP-0007
+        tasks: omitted_for_brevity
+      profile_ref:
+        profile_id: PR-DEFAULT
+        profile_version: v1.0.1
+      calendar_ref:
+        calendar_id: CAL-WORKWEEK
+        calendar_version: v1.0.1
+    options:
+      dry_run: false
+    context:
+      timestamp_utc: '2025-12-25T00:00:00Z'

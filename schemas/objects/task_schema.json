@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Task",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^WP[0-9]{3}-T[0-9]{3}$",
+      "description": "Task ID in format WP###-T### (three digits each, zero-padded)."
+    },
+    "work_package_id": {
+      "type": "string",
+      "pattern": "^WP[0-9]{3}$",
+      "description": "Parent Work Package ID in format WP###."
+    },
+    "description": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "finish_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "work_package_id",
+    "description"
+  ],
+  "additionalProperties": true,
+  "$id": "valor://schemas/objects/task_schema.json"
+}

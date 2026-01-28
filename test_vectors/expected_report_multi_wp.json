@@ -1,0 +1,116 @@
+{
+  "report_id": "RPT-0001",
+  "report_type": "WP_TASKS_REPORT",
+  "title": "WP & Tasks Report",
+  "generated_at_utc": "2025-12-26T00:00:00Z",
+  "wp_summaries": [
+    {
+      "wp_id": "WP001",
+      "wp_title": "HVAC AHU Validation",
+      "tasks_table": [
+        {
+          "task_id": "WP001-T001",
+          "description": "URS review & approval",
+          "owner": "CQV",
+          "start_date": "12/12/2025",
+          "finish_date": "14/12/2025",
+          "status": "Opened"
+        },
+        {
+          "task_id": "WP001-T002",
+          "description": "RTM development and approval",
+          "owner": "CQV",
+          "start_date": "15/12/2025",
+          "finish_date": "17/12/2025",
+          "status": "Opened"
+        },
+        {
+          "task_id": "WP001-T003",
+          "description": "Design Qualification (DQ) preparation",
+          "owner": "Engineering",
+          "start_date": "18/12/2025",
+          "finish_date": "22/12/2025",
+          "status": "Opened"
+        }
+      ]
+    },
+    {
+      "wp_id": "WP002",
+      "wp_title": "Cleanroom Routine Qualification",
+      "tasks_table": [
+        {
+          "task_id": "WP002-T001",
+          "description": "SOP verification",
+          "owner": "QA",
+          "start_date": "21/12/2025",
+          "finish_date": "22/12/2025",
+          "status": "Opened"
+        },
+        {
+          "task_id": "WP002-T002",
+          "description": "OQ execution (pressure cascade, HEPA leak test, airflow checks)",
+          "owner": "CQV",
+          "start_date": "23/12/2025",
+          "finish_date": "24/12/2025",
+          "status": "Opened"
+        }
+      ]
+    },
+    {
+      "wp_id": "WP003",
+      "wp_title": "Cleanroom Construction & Installation Qualification",
+      "tasks_table": [
+        {
+          "task_id": "WP003-T001",
+          "description": "Installation Qualification (IQ) protocol issuance",
+          "owner": "CQV",
+          "start_date": "01/01/2026",
+          "finish_date": "02/01/2026",
+          "status": "Opened"
+        },
+        {
+          "task_id": "WP003-T002",
+          "description": "IQ execution (as-built verification, utilities tie-in checks)",
+          "owner": "Engineering",
+          "start_date": "03/01/2026",
+          "finish_date": "06/01/2026",
+          "status": "Opened"
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "title": "Overview",
+      "text": "This collective report summarizes the qualification activities across WP001, WP002, and WP003."
+    },
+    {
+      "title": "Objectives",
+      "bullets": [
+        "Ensure qualification readiness and compliance with GMP requirements.",
+        "Capture traceable, protocol-driven CQV lifecycle across all WP streams."
+      ]
+    },
+    {
+      "title": "Risks",
+      "bullets": [
+        "Schedule pressure on qualification streams running in parallel",
+        "Alignment gaps between Engineering and CQV readiness"
+      ]
+    },
+    {
+      "title": "Next Steps",
+      "bullets": [
+        "Monitor all task progress",
+        "Capture deviations, ensure alignment with lifecycle requirements",
+        "Finalize execution and close each WP accordingly"
+      ]
+    }
+  ],
+  "rendered_markdown": "# WP & Tasks Report\n\n## 1. Overview\nThis collective report summarizes the qualification activities across WP001, WP002, and WP003.\n\n## 2. Objectives\n- Ensure qualification readiness and compliance with GMP requirements.\n- Capture traceable, protocol-driven CQV lifecycle across all WP streams.\n\n## 3. Traceability\n- Standards and internal SOP references captured at WP/document level.\n\n## 4. Tasks\n\n### WP001 \u2013 HVAC AHU Validation\n| Task ID | Description | Owner | Start Date | Finish Date | Status |\n|---|---|---|---|---|---|\n| WP001-T001 | URS review & approval | CQV | 12/12/2025 | 14/12/2025 | Opened |\n| WP001-T002 | RTM development and approval | CQV | 15/12/2025 | 17/12/2025 | Opened |\n| WP001-T003 | Design Qualification (DQ) preparation | Engineering | 18/12/2025 | 22/12/2025 | Opened |\n\n### WP002 \u2013 Cleanroom Routine Qualification\n| Task ID | Description | Owner | Start Date | Finish Date | Status |\n|---|---|---|---|---|---|\n| WP002-T001 | SOP verification | QA | 21/12/2025 | 22/12/2025 | Opened |\n| WP002-T002 | OQ execution (pressure cascade, HEPA leak test, airflow checks) | CQV | 23/12/2025 | 24/12/2025 | Opened |\n\n### WP003 \u2013 Cleanroom Construction & Installation Qualification\n| Task ID | Description | Owner | Start Date | Finish Date | Status |\n|---|---|---|---|---|---|\n| WP003-T001 | Installation Qualification (IQ) protocol issuance | CQV | 01/01/2026 | 02/01/2026 | Opened |\n| WP003-T002 | IQ execution (as-built verification, utilities tie-in checks) | Engineering | 03/01/2026 | 06/01/2026 | Opened |\n\n## 5. Risks\n- Schedule pressure on qualification streams running in parallel\n- Alignment gaps between Engineering and CQV readiness\n\n## 6. Evidence\n- Protocols, reports, and supporting documentation stored under validated document control SOP\n\n## 7. Status\n- All WPs structured, with tasks planned and assigned\n- Execution pending; active monitoring advised\n\n## 8. Next Steps\n- Monitor all task progress\n- Capture deviations, ensure alignment with lifecycle requirements\n- Finalize execution and close each WP accordingly\n\n---\n**Completeness**: 100% \u2014 All active WPs have required fields and tasks  \n**No missing items detected**\n",
+  "completeness": {
+    "percent": 100,
+    "missing_items_detected": false,
+    "notes": "All active WPs have required fields and tasks."
+  }
+}

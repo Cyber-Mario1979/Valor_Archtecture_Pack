@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "valor://schemas/contracts/ps_resolve_result.schema.json",
+  "title": "Preset Resolve Result",
+  "type": "object",
+  "required": [
+    "preset_id",
+    "preset_version",
+    "bindings"
+  ],
+  "properties": {
+    "preset_id": {
+      "type": "string"
+    },
+    "preset_version": {
+      "type": "string"
+    },
+    "bindings": {
+      "type": "object",
+      "properties": {
+        "task_pool_ref": {
+          "type": "object",
+          "properties": {
+            "task_pool_id": {
+              "type": "string"
+            },
+            "task_pool_version": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "task_pool_id",
+            "task_pool_version"
+          ],
+          "additionalProperties": true
+        },
+        "profile_ref": {
+          "type": "object",
+          "properties": {
+            "profile_id": {
+              "type": "string"
+            },
+            "profile_version": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "profile_id",
+            "profile_version"
+          ],
+          "additionalProperties": true
+        },
+        "calendar_logic_ref": {
+          "type": "object",
+          "properties": {
+            "calendar_id": {
+              "type": "string"
+            },
+            "calendar_version": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "calendar_id",
+            "calendar_version"
+          ],
+          "additionalProperties": true
+        },
+        "standards_bundle_ref": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "task_pool_ref",
+        "profile_ref",
+        "calendar_logic_ref"
+      ],
+      "additionalProperties": true
+    },
+    "rules_fired": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stamps": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

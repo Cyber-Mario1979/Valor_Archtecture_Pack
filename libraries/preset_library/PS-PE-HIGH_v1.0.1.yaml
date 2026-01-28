@@ -1,0 +1,50 @@
+preset_id: PS-PE-HIGH
+version: v1.0.1
+revision_date: '2025-12-26'
+name: Process Equipment — High (Project/Line)
+description: Selector preset for high-complexity process equipment programs (e.g.,
+  blister line). Binds TP-PE-HIGH + PROF-PE-HIGH and CAL-WORKWEEK. Designed for deterministic
+  staging and planning.
+applicability:
+  system_type: Process
+  complexity: High
+  tags_any:
+  - ProcessEquipment
+  - HighComplexity
+  tags_all: []
+  scope_hints:
+  - project
+  - multi-equipment
+  - line
+bindings:
+  task_pool_ref:
+    task_pool_id: TP-PE-HIGH
+    task_pool_version: v1.0.1
+  profile_ref:
+    profile_id: PROF-PE-HIGH
+    profile_version: v1.0.1
+  calendar_logic_ref:
+    calendar_id: CAL-WORKWEEK
+    calendar_version: v1.0.1
+  standards_bundle_ref: null
+rules:
+  matching:
+    strategy: exact_then_best_effort
+    require_exact_match: true
+  staging:
+    default_ordering: task_pool_order
+    apply_optional_tasks_policy: include_optional_with_flags
+stamps:
+  preset:
+    id: PS-PE-HIGH
+    version: v1.0.1
+  profile:
+    id: PROF-PE-HIGH
+    version: v1.0.1
+  calendar:
+    id: CAL-WORKWEEK
+    version: v1.0.1
+  bundle: null
+  task_pool:
+    id: TP-PE-HIGH
+    version: v1.0.1

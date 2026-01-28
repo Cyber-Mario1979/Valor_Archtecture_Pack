@@ -1,0 +1,115 @@
+contract_id: VALOR-contract-orch-wp-user-driven-baseline
+current_version: v1.0.1
+supported_versions:
+- v1.0.1
+owner_subsystem: WP
+called_by: Orchestration
+compatibility_policy:
+  semver: true
+  orchestration_rules:
+    accept_minor_patch_within_major: true
+    refuse_major_without_explicit_upgrade: true
+envelopes:
+  request_schema: schemas/contracts/contract_request.schema.json
+  response_schema: schemas/contracts/contract_response.schema.json
+
+policy_lock:
+  applies_when_profile_missing: true
+  duration_rules:
+    guessing_allowed: false
+    required_source: USER_INPUT
+  export_rules:
+    allowed: true
+    requires_explicit_confirmation: true
+    confirmation_type: USER_DRIVEN_BASELINE_NO_PROFILE
+
+error_taxonomy:
+  standard_codes:
+  - MODE_VIOLATION
+  - VALIDATION_ERROR
+  - NOT_FOUND
+  - CONFLICT
+  - INVARIANT_VIOLATION
+  - INTERNAL_ERROR
+  additional_error_subcodes:
+  - MISSING_CONFIRMATION_USER_DRIVEN_BASELINE
+  - INVALID_DURATION_OVERRIDE
+  - INVALID_DURATION_SOURCE_FOR_BASIS
+  - PLANNING_BASIS_NOT_SET
+
+actions:
+- action_type: WP_SET_PLANNING_BASIS
+  allowed_modes:
+  - M2
+  side_effect_class: MUTATES_TRUTH
+  idempotent: true
+  confirmation_required: true
+  required_payload_fields:
+  - planning_basis
+  - planning_label
+  optional_payload_fields:
+  - profile_id
+  - profile_version
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  notes:
+    - planning_basis values: PROFILE_BASED | USER_DRIVEN_NO_PROFILE
+    - when planning_basis=USER_DRIVEN_NO_PROFILE, durations must be provided via WP_SET_TASK_DURATION_OVERRIDES
+  errors:
+  - code: NOT_FOUND
+    subcode: WP_NOT_FOUND
+  - code: VALIDATION_ERROR
+    subcode: INVALID_PLANNING_BASIS
+
+- action_type: WP_SET_TASK_DURATION_OVERRIDES
+  allowed_modes:
+  - M2
+  side_effect_class: MUTATES_TRUTH
+  idempotent: false
+  confirmation_required: true
+  required_payload_fields:
+  - updates
+  optional_payload_fields: []
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  notes:
+    - each update must include task_id, duration_override_wd (>=0), duration_source=USER_INPUT
+    - WP system must refuse non-USER_INPUT duration_source when planning_basis=USER_DRIVEN_NO_PROFILE
+  errors:
+  - code: NOT_FOUND
+    subcode: TASK_NOT_FOUND
+  - code: VALIDATION_ERROR
+    subcode: INVALID_DURATION_OVERRIDE
+  - code: VALIDATION_ERROR
+    subcode: INVALID_DURATION_SOURCE_FOR_BASIS
+  - code: INVARIANT_VIOLATION
+    subcode: PLANNING_BASIS_NOT_SET
+
+- action_type: WP_RECORD_CONFIRMATION
+  allowed_modes:
+  - M2
+  side_effect_class: MUTATES_TRUTH
+  idempotent: false
+  confirmation_required: true
+  required_payload_fields:
+  - confirmation_type
+  - confirmed
+  - timestamp_utc
+  optional_payload_fields:
+  - actor
+  target_fields:
+    required:
+    - wp_id
+    optional: []
+  notes:
+    - confirmations are append-only; latest timestamp is authoritative for gating exports
+    - expected confirmation_type for user-driven baseline: USER_DRIVEN_BASELINE_NO_PROFILE
+  errors:
+  - code: NOT_FOUND
+    subcode: WP_NOT_FOUND
+  - code: VALIDATION_ERROR
+    subcode: INVALID_CONFIRMATION_TYPE

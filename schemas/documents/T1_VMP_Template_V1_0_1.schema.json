@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "valor://schemas/documents/T1_VMP_Template_V1_0_1.schema.json",
+  "title": "Render inputs for T1_VMP_Template_V1_0_1.md",
+  "type": "object",
+  "properties": {
+    "doc": {
+      "type": "object",
+      "properties": {
+        "actors": {
+          "type": "object",
+          "properties": {
+            "approver": {
+              "type": "string"
+            },
+            "author": {
+              "type": "string"
+            },
+            "reviewer": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "doc_type": {
+          "type": "string"
+        },
+        "generated_utc": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "revision_date": {
+          "type": "string"
+        },
+        "signatures_table_md": {
+          "type": "string"
+        },
+        "stamps": {
+          "type": "object",
+          "properties": {
+            "bundle": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "calendar": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "preset": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            },
+            "profile": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "status": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "wp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "doc.actors.approver",
+    "doc.actors.author",
+    "doc.actors.reviewer",
+    "doc.doc_type",
+    "doc.generated_utc",
+    "doc.id",
+    "doc.revision_date",
+    "doc.signatures_table_md",
+    "doc.stamps.bundle.id",
+    "doc.stamps.bundle.version",
+    "doc.stamps.calendar.id",
+    "doc.stamps.calendar.version",
+    "doc.stamps.preset.id",
+    "doc.stamps.preset.version",
+    "doc.stamps.profile.id",
+    "doc.stamps.profile.version",
+    "doc.status",
+    "doc.title",
+    "doc.version",
+    "wp.id",
+    "wp.title"
+  ],
+  "additionalProperties": true,
+  "description": "Auto-generated from template placeholders. Provide these keys to render the template."
+}
