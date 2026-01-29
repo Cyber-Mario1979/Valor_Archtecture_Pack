@@ -11,7 +11,7 @@
 
 # Valor Architecture Pack (v1.0.1)
 
-![Valor architecture blueprint](assets/architecture_blueprint.png)
+![Valor architecture blueprint](architecture_blueprint.png
 
 The **Valor Architecture Pack** is a blueprint for a contract‑driven,
 system‑of‑systems (SoS) designed to support **Commissioning, Qualification
