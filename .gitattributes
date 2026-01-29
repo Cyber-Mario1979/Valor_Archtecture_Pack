@@ -1,2 +1,13 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Force LF for all text files (deterministic across OS)
+* text=auto eol=lf
+
+# Windows scripts can stay CRLF if you ever add them
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
+# Treat images as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+
