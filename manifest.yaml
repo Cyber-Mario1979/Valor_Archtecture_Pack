@@ -2,7 +2,7 @@ manifest_version: v1.0.1
 pack:
   name: Valor_Architecture_Pack
   pack_version: v1.0.1
-  created_at_utc: '2026-01-30T21:37:55Z'
+  created_at_utc: '2026-01-30T22:20:10Z'
   hash_algorithm: sha256
   root: .
 files:
@@ -25,17 +25,17 @@ files:
   sha256: 713c18823cf6faed3748d9134fcf0f4379ab9a04fb3d7b0edf91cae636bb1c77
   bytes: 10002
 - path: Valor_Arch_Addendums_v1.0.1A/ARCH_Addendum_Canvas_Rendering_Record_Layout_v1.0.1A.md
-  sha256: b42f1bf3635ae71683f3ae5dbee1e67a6cd72fd4e50b9c5a2d808329f3e1b608
-  bytes: 2206
+  sha256: fa0c48019b6048e07baf3c5bda7995a2de539224484f213988c9a03efaa03ca3
+  bytes: 7088
 - path: Valor_Arch_Addendums_v1.0.1A/ARCH_Addendum_Document_Generation_Compliance_v1.0.1A.md
   sha256: 48b193621de0c1eb6f2daeedc6d8acbcd5cbaef7dd06d1825f4ee0300b912c2d
   bytes: 1481
 - path: Valor_Arch_Addendums_v1.0.1A/ARCH_Addendum_Planning_Invariants_UX_Contract_v1.0.1A.md
-  sha256: 4cceb583e7aaeca13add9938932319f81efd5736f071e7de17357469d6ce7cbb
-  bytes: 2098
+  sha256: e8d13c72368718bee5ca3decb561f55d8ccdddb875835acca67411a9626d321f
+  bytes: 5848
 - path: Valor_Arch_Addendums_v1.0.1A/ARCH_Addendum_Reporting_Export_Projection_Contract_v1.0.1A.md
-  sha256: b6b5d136547d23ea83a404b18a1c41a04965a812bd743807e48f20c0428ed38a
-  bytes: 1808
+  sha256: fc1cc46a233374a61162e7091bf9464d6324c3caa579e104a0c2e586a0d23a01
+  bytes: 9406
 - path: action_blocks/BUILD_REPORT.yaml
   sha256: a452f392902509e5c3cb8ad177c86fb02d923aae32503ca15b3eecf135f9e5de
   bytes: 404
