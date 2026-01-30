@@ -35,6 +35,6 @@ Document bodies must not include runtime/UI lines such as:
 Operational guidance must remain in chat only.
 
 ## 4) Timestamps
-- Timestamp format: `dd-mm-yyyy HH:MM Africa/Cairo`
+- Timestamp format: `dd-mm-yyyy HH:MM Cairo Time (Egypt)`
 - Never label a timestamp as UTC unless it is actually UTC.
 - If the user provides the current Cairo time during testing, treat it as the session NOW for stamping until updated.
